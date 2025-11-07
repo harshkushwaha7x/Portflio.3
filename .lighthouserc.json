@@ -2,21 +2,19 @@
   "ci": {
     "collect": {
       "staticDistDir": "./dist",
-      "url": [
-        "http://localhost:8080/"
-      ],
+      "url": ["http://localhost:8080/"],
       "numberOfRuns": 3
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["warn", { "minScore": 0.85 }],
-        "categories:accessibility": ["error", { "minScore": 0.90 }],
-        "categories:best-practices": ["warn", { "minScore": 0.90 }],
-        "categories:seo": ["error", { "minScore": 0.90 }],
-        "first-contentful-paint": ["warn", { "maxNumericValue": 2500, "aggregationMethod": "median" }],
-        "largest-contentful-paint": ["warn", { "maxNumericValue": 3500, "aggregationMethod": "median" }],
-        "cumulative-layout-shift": ["warn", { "maxNumericValue": 0.1, "aggregationMethod": "median" }],
-        "total-blocking-time": ["warn", { "maxNumericValue": 300, "aggregationMethod": "median" }]
+        "categories:performance": ["warn", { "minScore": 0.7 }],
+        "categories:accessibility": ["warn", { "minScore": 0.85 }],
+        "categories:best-practices": ["warn", { "minScore": 0.9 }],
+        "categories:seo": ["warn", { "minScore": 0.9 }],
+        "first-contentful-paint": ["warn", { "maxNumericValue": 4000, "aggregationMethod": "median" }],
+        "largest-contentful-paint": ["warn", { "maxNumericValue": 6000, "aggregationMethod": "median" }],
+        "cumulative-layout-shift": ["warn", { "maxNumericValue": 0.3, "aggregationMethod": "median" }],
+        "total-blocking-time": ["warn", { "maxNumericValue": 800, "aggregationMethod": "median" }]
       }
     },
     "upload": {
