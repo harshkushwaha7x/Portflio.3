@@ -1,0 +1,255 @@
+/* Font is now loaded via HTML for better performance */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    /* Main color palette */
+    --background: 0 0% 96%;
+    --foreground: 222.2 84% 4.9%;
+    --gray-surface: 0 0% 97%;
+    
+    /* Portfolio specific colors */
+    --portfolio-gray: 0 0% 15%;
+    --portfolio-gray-light: 220 13% 91%;
+    --portfolio-blue: 220 91% 37%;
+    --portfolio-blue-dark: 220 91% 25%;
+    
+    /* Card colors */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --card-shadow: 220 13% 91%;
+    
+    /* Navigation */
+    --nav-background: 0 0% 100%;
+    --nav-border: 220 13% 91%;
+    
+    /* Text colors */
+    --text-primary: 222.2 84% 4.9%;
+    --text-secondary: 215.4 16.3% 46.9%;
+    --text-muted: 215.4 16.3% 60%;
+    
+    /* Button colors */
+    --button-primary: 222.2 47.4% 11.2%;
+    --button-primary-hover: 222.2 47.4% 8%;
+    --button-secondary: 0 0% 100%;
+    --button-accent: 220 91% 37%;
+    
+    /* Other semantic colors */
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 7%;
+    --foreground: 210 40% 98%;
+    --gray-surface: 240 10% 8%;
+    
+    /* Portfolio dark colors */
+    --portfolio-gray: 210 40% 98%;
+    --portfolio-gray-light: 217.2 32.6% 17.5%;
+    --portfolio-blue: 217.2 91.2% 59.8%;
+    --portfolio-blue-dark: 224.3 76.3% 48%;
+    
+    --card: 240 10% 8%;
+    --card-foreground: 210 40% 98%;
+    --card-shadow: 217.2 32.6% 17.5%;
+    
+    --nav-background: 240 10% 7%;
+    --nav-border: 217.2 32.6% 17.5%;
+    
+    --text-primary: 210 40% 98%;
+    --text-secondary: 215 20.2% 65.1%;
+    --text-muted: 215 20.2% 55%;
+    
+    --button-primary: 217.2 32.6% 17.5%;
+    --button-primary-hover: 217.2 32.6% 20%;
+    --button-secondary: 240 10% 8%;
+    --button-accent: 217.2 91.2% 59.8%;
+    
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    /* Ensure anchored sections are not hidden under fixed navbar */
+    scroll-padding-top: var(--nav-h, 72px);
+  }
+
+  /* Skip link styling */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 8px 12px;
+    z-index: 1000;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus { top: 8px; }
+}
+
+/* Portfolio specific utility classes */
+@layer components {
+  .section {
+    @apply relative;
+  }
+
+  /* Fluid typography for section headings */
+  .section h2 {
+    font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.25rem);
+    line-height: 1.2;
+  }
+  .section h3 {
+    font-size: clamp(1.125rem, 0.95rem + 0.6vw, 1.5rem);
+    line-height: 1.25;
+  }
+  
+  .nav-link {
+    @apply text-foreground hover:text-primary transition-colors duration-300 font-medium;
+  }
+  
+  .project-card {
+    @apply transform transition-all duration-300 hover:scale-105;
+  }
+
+  /* Blur-up placeholder for images */
+  .blur-up {
+    filter: blur(12px);
+    transform: scale(1.02);
+    transition: filter 300ms ease, transform 300ms ease;
+  }
+
+  /* Fancy hover utilities */
+  .hover-float {
+    @apply transition-transform duration-300;
+  }
+  .hover-float:hover {
+    transform: translateY(-6px);
+  }
+  .hover-tilt {
+    @apply transition-transform duration-300;
+  }
+  .hover-tilt:hover {
+    transform: perspective(600px) rotateX(3deg) rotateY(-3deg);
+  }
+  .subtle-glow {
+    box-shadow: 0 4px 24px hsl(var(--portfolio-blue)/0.15);
+  }
+  
+  .project-modal-tag {
+    @apply px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-xs font-medium;
+    @apply relative;
+  }
+  
+  .underline-on-hover::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 origin-bottom-right transition-transform duration-300;
+  }
+  
+  .underline-on-hover:hover::after {
+    @apply scale-x-100 origin-bottom-left;
+  }
+}
+
+/* Animations */
+@layer utilities {
+  @keyframes blink {
+    0%, 50% { border-color: transparent; }
+    51%, 100% { border-color: currentColor; }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+  }
+}
+
+/* Back to top button */
+#backToTop {
+  @apply fixed bottom-8 right-8 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-lg cursor-pointer opacity-0 invisible transition-all duration-300 z-50 hover:bg-button-primary-hover;
+}
+
+#backToTop.visible {
+  @apply opacity-100;
+}
