@@ -58,7 +58,7 @@ export const projects: Project[] = [
   {
     id: 3,
     title: "Credit Card Fraud Detection",
-    description: "Built an ML app with Logistic Regression and Streamlit, deployed on Azure using Docker and CI/CD.",
+    description: "Built and deployed ML fraud detection app on Azure with Docker & CI/CD.",
     image: projectDetection,
     tags: ["Python", "scikit-learn", "Docker", "+3"],
     liveDemo: "https://creditcard-h3e5aaaffcajawc8.centralindia-01.azurewebsites.net/",
